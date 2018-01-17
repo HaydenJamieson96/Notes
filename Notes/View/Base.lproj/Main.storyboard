@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JsL-gd-Bst">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <color key="barTintColor" red="0.85490196078431369" green="0.73725490196078436" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Notes" id="spm-XS-zXu">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="wZx-HY-ahH">
+                                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <connections>
+                                                <action selector="onComposeTapped:" destination="BYZ-38-t0r" id="6El-9N-fQe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oOg-6G-lOm">
+                                <rect key="frame" x="0.0" y="96" width="375" height="571"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JsL-gd-Bst" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DJu-B6-x3X"/>
+                            <constraint firstItem="JsL-gd-Bst" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EbR-f3-zzq"/>
+                            <constraint firstItem="JsL-gd-Bst" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fFN-De-3BX"/>
+                            <constraint firstItem="oOg-6G-lOm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ff0-5a-65x"/>
+                            <constraint firstItem="oOg-6G-lOm" firstAttribute="top" secondItem="JsL-gd-Bst" secondAttribute="bottom" id="j9M-9T-37D"/>
+                            <constraint firstItem="oOg-6G-lOm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mde-Ki-MDz"/>
+                            <constraint firstItem="oOg-6G-lOm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zTg-ik-R1T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="oOg-6G-lOm" id="iPn-Jw-XYm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>
