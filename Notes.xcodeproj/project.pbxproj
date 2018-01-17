@@ -14,6 +14,8 @@
 		109F9635200F61AB00BFEAB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109F9633200F61AB00BFEAB9 /* LaunchScreen.storyboard */; };
 		109F9641200F66AC00BFEAB9 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F9640200F66AC00BFEAB9 /* Note.swift */; };
 		109F9643200F675000BFEAB9 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F9642200F675000BFEAB9 /* AlertService.swift */; };
+		109F9647200F6B0100BFEAB9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109F9646200F6B0100BFEAB9 /* CloudKit.framework */; };
+		109F9649200F6CA600BFEAB9 /* CKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F9648200F6CA600BFEAB9 /* CKService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		109F9636200F61AB00BFEAB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		109F9640200F66AC00BFEAB9 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		109F9642200F675000BFEAB9 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		109F9644200F6AE700BFEAB9 /* Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Notes.entitlements; sourceTree = "<group>"; };
+		109F9646200F6B0100BFEAB9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		109F9648200F6CA600BFEAB9 /* CKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109F9647200F6B0100BFEAB9 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,7 @@
 			children = (
 				109F9629200F61AB00BFEAB9 /* Notes */,
 				109F9628200F61AB00BFEAB9 /* Products */,
+				109F9645200F6B0100BFEAB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +65,7 @@
 		109F9629200F61AB00BFEAB9 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				109F9644200F6AE700BFEAB9 /* Notes.entitlements */,
 				109F963F200F62C200BFEAB9 /* Model */,
 				109F963E200F62BE00BFEAB9 /* View */,
 				109F963D200F62B600BFEAB9 /* Controller */,
@@ -71,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				109F9642200F675000BFEAB9 /* AlertService.swift */,
+				109F9648200F6CA600BFEAB9 /* CKService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -100,6 +109,14 @@
 				109F9640200F66AC00BFEAB9 /* Note.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		109F9645200F6B0100BFEAB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				109F9646200F6B0100BFEAB9 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +152,14 @@
 					109F9626200F61AB00BFEAB9 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -176,6 +201,7 @@
 			files = (
 				109F962D200F61AB00BFEAB9 /* ViewController.swift in Sources */,
 				109F962B200F61AB00BFEAB9 /* AppDelegate.swift in Sources */,
+				109F9649200F6CA600BFEAB9 /* CKService.swift in Sources */,
 				109F9643200F675000BFEAB9 /* AlertService.swift in Sources */,
 				109F9641200F66AC00BFEAB9 /* Note.swift in Sources */,
 			);
@@ -314,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Notes/Notes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M42D57N49Z;
 				INFOPLIST_FILE = Notes/Info.plist;
@@ -329,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Notes/Notes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M42D57N49Z;
 				INFOPLIST_FILE = Notes/Info.plist;

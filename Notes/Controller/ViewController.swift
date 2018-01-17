@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 
     @IBAction func onComposeTapped(_ sender: Any) {
         AlertService.composeNote(in: self) { (note) in
+            CKService.shared.save(record: note.noteRecord())
             self.insert(note: note)
         }
     }
