@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CKService.shared.subscribe()
+        CKService.shared.subscribeWithUI()
+        //CKService.shared.subscribe()
+        UNService.shared.authorize()
         tableView.dataSource = self
         getNotes()
         NotificationCenter.default.addObserver(self, selector: #selector(handleFetch(_:)), name: NSNotification.Name("internalNotification.fetchedRecord"), object: nil)

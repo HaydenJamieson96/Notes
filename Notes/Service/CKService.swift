@@ -48,6 +48,21 @@ class CKService {
         }
     }
     
+    func subscribeWithUI() {
+        let subscription = CKQuerySubscription(recordType: Note.recordType, predicate: NSPredicate(value: true), options: .firesOnRecordCreation)
+        let notificationInfo = CKNotificationInfo()
+        notificationInfo.title = "This is cool"
+        notificationInfo.subtitle = "A whole new iCloud"
+        notificationInfo.alertBody = "A bet you didn't know about the power of the cloud"
+        notificationInfo.shouldBadge = true
+        notificationInfo.soundName = "default"
+        subscription.notificationInfo = notificationInfo
+        privateDatabase.save(subscription) { (sub, error) in
+            print(error ?? "No CKSub error")
+            print(sub ?? "Unable to subscribe")
+        }
+    }
+    
     func fetchRecord(with recordId: CKRecordID) {
         privateDatabase.fetch(withRecordID: recordId) { (record, error) in
             print(error ?? "No CKFetch error")
