@@ -24,6 +24,19 @@ class CKService {
         }
     }
     
+    func query(recordType: String, completion: @escaping ([CKRecord]) -> () ) {
+        let query = CKQuery(recordType: recordType, predicate: NSPredicate(value: true))
+        
+        privateDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            print(error ?? "No CKQuery error")
+            guard let records = records else {return}
+            DispatchQueue.main.async {
+                completion(records)
+            }
+            
+        }
+    }
+    
 }
 
 
