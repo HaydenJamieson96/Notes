@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class ViewController: UIViewController {
 
@@ -16,8 +17,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CKService.shared.subscribe()
         tableView.dataSource = self
         getNotes()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFetch(_:)), name: NSNotification.Name("internalNotification.fetchedRecord"), object: nil)
     }
     
     func getNotes() {
@@ -38,6 +41,12 @@ class ViewController: UIViewController {
         notes.insert(note, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    @objc
+    func handleFetch(_ sender: Notification) {
+        guard let record = sender.object as? CKRecord, let note = Note(record: record) else { return }
+        insert(note: note)
     }
 
 }

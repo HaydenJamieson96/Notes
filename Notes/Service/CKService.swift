@@ -37,6 +37,39 @@ class CKService {
         }
     }
     
+    func subscribe() {
+        let subscription = CKQuerySubscription(recordType: Note.recordType, predicate: NSPredicate(value: true), options: .firesOnRecordCreation)
+        let notificationInfo = CKNotificationInfo()
+        notificationInfo.shouldSendContentAvailable = true
+        subscription.notificationInfo = notificationInfo
+        privateDatabase.save(subscription) { (sub, error) in
+            print(error ?? "No CKSub error")
+            print(sub ?? "Unable to subscribe")
+        }
+    }
+    
+    func fetchRecord(with recordId: CKRecordID) {
+        privateDatabase.fetch(withRecordID: recordId) { (record, error) in
+            print(error ?? "No CKFetch error")
+            guard let record = record else {return}
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name("internalNotification.fetchedRecord"), object: record)
+            }
+            
+        }
+    }
+    
+    func handleNotification(with userInfo: [AnyHashable: Any]) {
+        let notification = CKNotification(fromRemoteNotificationDictionary: userInfo)
+        switch notification.notificationType {
+        case .query:
+            guard let queryNotification = notification as? CKQueryNotification, let recordId = queryNotification.recordID else {return}
+            fetchRecord(with: recordId)
+        default:
+            return
+        }
+    }
+    
 }
 
 
